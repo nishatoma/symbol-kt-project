@@ -1,7 +1,9 @@
 package com.example.symbolkt.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class Stock(
     val count: Int,
-//    @JsonProperty
-    val result: List<StockResult>
+    @JsonProperty("result")
+    val results: List<StockResult>
     )

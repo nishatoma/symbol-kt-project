@@ -8,5 +8,5 @@
         android:layout_height="match_parent"
         app:navGraph="@navigation/nav_graph"
         android:name="androidx.navigation.fragment.NavHostFragment"/>
-    
+
 </merge>

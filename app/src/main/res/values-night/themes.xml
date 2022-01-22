@@ -1,16 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.SymbolKT" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!--        <item name="android:background">@color/black</item>-->
+        <item name="android:windowBackground">@color/gray</item>
+        <item name="android:textColor">@color/light_red</item>
+        <item name="android:colorButtonNormal">@color/black</item>
+        <item name="actionBarTheme">@style/ActionTheme</item>
+        <item name="cardViewStyle">@style/CardTheme</item>
     </style>
+
+    <style name="AppTheme.SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="ActionTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="background">@color/cardview_dark_background</item>
+        <item name="android:textColorPrimary">@color/light_red</item>
+    </style>
+
+    <style name="CardTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="cardBackgroundColor">@color/black</item>
+    </style>
+
 </resources>

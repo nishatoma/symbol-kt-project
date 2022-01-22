@@ -3,4 +3,5 @@
     <string name="stock_name">%s</string>
     <string name="stock_type">%s</string>
     <string name="stock_symbol">%s</string>
+    <string name="api_key">c7ke93iad3i9q0uqoa70</string>
 </resources>

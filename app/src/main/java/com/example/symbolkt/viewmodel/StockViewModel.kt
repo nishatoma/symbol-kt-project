@@ -37,7 +37,7 @@ class StockViewModel: ViewModel() {
     private fun getStockResults() {
         coroutineScope.launch {
             _isLoading.postValue(true)
-            val stockResponse = SymbolApi.retrofitService.getStocks("apple", "c7ke93iad3i9q0uqoa70")
+            val stockResponse = SymbolApi.retrofitService.getStocks("AAPL")
 
             withContext(Dispatchers.Main) {
                 if (stockResponse.isSuccessful) {

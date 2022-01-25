@@ -6,4 +6,6 @@
     <string name="api_key">c7ke93iad3i9q0uqoa70</string>
     <string name="search">search</string>
     <string name="sv_hint_search_query">Search ticker or company name</string>
+    <string name="tv_stock_result">Search ticker or company name</string>
+    <string name="tv_result_empty">Could not find results for %s</string>
 </resources>

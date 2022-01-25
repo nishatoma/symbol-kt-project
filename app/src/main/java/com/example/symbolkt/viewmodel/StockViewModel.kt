@@ -28,6 +28,11 @@ class StockViewModel: ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    // Variable to tell if Retrofit is loading
+    private val _isCallSuccessful = MutableLiveData<Boolean>()
+    val isCallSuccessful: LiveData<Boolean>
+        get() = _isCallSuccessful
+
     private val _searchQuery = MutableLiveData<String>()
     val searchQuery: LiveData<String>
         get() = _searchQuery
@@ -37,22 +42,23 @@ class StockViewModel: ViewModel() {
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
     init {
+        _searchQuery.value = ""
         _isLoading.value = false
+        _isCallSuccessful.value = false
         _fragmentTitle.value = FRAGMENT_TITLE
-        getStockResults()
     }
 
-    private fun getStockResults() {
+    private fun getStockResults(query: String) {
         coroutineScope.launch {
             _isLoading.postValue(true)
-            val stockResponse = SymbolApi.retrofitService.getStocks("apple")
+            val stockResponse = SymbolApi.retrofitService.getStocks(query)
 
             withContext(Dispatchers.Main) {
                 if (stockResponse.isSuccessful) {
                     _stockResults.postValue(stockResponse.body()?.results)
-                    Log.d("StockViewModel", _stockResults.value.toString())
+                    _isCallSuccessful.postValue(stockResponse.body()?.count!! > 0)
                 } else {
-                    Log.d("StockViewModel", stockResponse.errorBody().toString())
+                    _isCallSuccessful.postValue(false)
                 }
                 _isLoading.value = false
             }
@@ -60,8 +66,12 @@ class StockViewModel: ViewModel() {
         }
     }
 
-    fun updateQuery(query: String) {
-        _searchQuery.value = query
+    fun updateQuery(q: String) {
+        _searchQuery.value = q
+    }
+
+    fun onSearchClicked() {
+        getStockResults(_searchQuery.value!!)
     }
 
     override fun onCleared() {

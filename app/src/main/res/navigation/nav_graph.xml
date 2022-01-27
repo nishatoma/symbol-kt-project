@@ -9,6 +9,19 @@
         android:id="@+id/stockFragment"
         android:name="com.example.symbolkt.fragment.StockFragment"
         android:label="StockFragment"
-        tools:layout="@layout/fragment_stock"/>
+        tools:layout="@layout/fragment_stock">
+        <action
+            android:id="@+id/action_stockFragment_to_stockDetailsFragment"
+            app:destination="@id/stockDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stockDetailsFragment"
+        android:name="com.example.symbolkt.fragment.StockDetailsFragment"
+        android:label="StockDetailsFragment"
+        tools:layout="@layout/fragment_stock_details">
+        <argument
+            android:name="stockResult"
+            app:argType="com.example.symbolkt.model.StockResult" />
+    </fragment>
 
 </navigation>

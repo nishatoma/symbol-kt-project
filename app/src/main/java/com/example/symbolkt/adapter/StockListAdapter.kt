@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.symbolkt.R
 import com.example.symbolkt.model.StockResult
 
-class StockListAdapter: RecyclerView.Adapter<StockListAdapter.StockViewHolder>() {
+class StockListAdapter(val clickListener: ClickListener): RecyclerView.Adapter<StockListAdapter.StockViewHolder>() {
 
      var data = listOf<StockResult>()
         set(value) {
@@ -28,6 +28,9 @@ class StockListAdapter: RecyclerView.Adapter<StockListAdapter.StockViewHolder>()
         holder.name.text = item.description
         holder.type.text = item.type
         holder.symbol.text = item.symbol
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(item)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -38,6 +41,12 @@ class StockListAdapter: RecyclerView.Adapter<StockListAdapter.StockViewHolder>()
         val name: TextView = view.findViewById(R.id.tv_stock_description)
         val type: TextView = view.findViewById(R.id.tv_stock_type)
         val symbol: TextView = view.findViewById(R.id.tv_stock_symbol)
+    }
+
+    class ClickListener(val clickListener: (stockResult :StockResult) -> Unit) {
+        fun onClick(stockResult :StockResult) {
+            clickListener(stockResult)
+        }
     }
 }
 

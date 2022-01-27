@@ -9,14 +9,8 @@ import com.example.symbolkt.network.SymbolApi
 import kotlinx.coroutines.*
 
 
-private const val FRAGMENT_TITLE = "Stocks"
 
 class StockViewModel: ViewModel() {
-
-    // Change fragment title on start
-    private val _fragmentTitle = MutableLiveData<String>()
-    val fragmentTitle: LiveData<String>
-        get() = _fragmentTitle
 
     // Variable for storing stock result
     private val _stockResults = MutableLiveData<List<StockResult>>()
@@ -41,11 +35,15 @@ class StockViewModel: ViewModel() {
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
+    // Stock result
+    private val _stockResult = MutableLiveData<StockResult>()
+    val stockResult: LiveData<StockResult>
+        get() = _stockResult
+
     init {
         _searchQuery.value = ""
         _isLoading.value = false
         _isCallSuccessful.value = false
-        _fragmentTitle.value = FRAGMENT_TITLE
     }
 
     private fun getStockResults(query: String) {
@@ -77,5 +75,9 @@ class StockViewModel: ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun setStockResult(result: StockResult) {
+        _stockResult.value = result
     }
 }

@@ -8,4 +8,6 @@
     <string name="sv_hint_search_query">Search ticker or company name</string>
     <string name="tv_stock_result">Search ticker or company name</string>
     <string name="tv_result_empty">Could not find results for %s</string>
+    <string name="stock_fragment_title">Stocks</string>
+    <string name="stock_fragment_details_title">Stock Details</string>
 </resources>

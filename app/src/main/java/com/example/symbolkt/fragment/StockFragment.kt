@@ -2,14 +2,13 @@ package com.example.symbolkt.fragment
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.symbolkt.R
 import com.example.symbolkt.adapter.StockListAdapter
 import com.example.symbolkt.databinding.FragmentStockBinding
@@ -30,15 +29,21 @@ class StockFragment : Fragment() {
 
         val binding = FragmentStockBinding.inflate(inflater)
 
+        // Change activity title
+        activity?.title = getString(R.string.stock_fragment_title)
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val adapter = StockListAdapter()
+        val adapter = StockListAdapter(StockListAdapter.ClickListener{
+            viewModel.setStockResult(it)
+        })
         binding.rvStock.adapter = adapter
 
         viewModel.stockResults.observe(viewLifecycleOwner, { stockResults ->
             stockResults?.let {
                 adapter.data = stockResults
+                setStockResultText(stockResults.isEmpty(), binding)
             }
         })
 
@@ -55,19 +60,17 @@ class StockFragment : Fragment() {
             binding.tvStockResult.isVisible = !isSuccessful
         })
 
-        viewModel.fragmentTitle.observe(viewLifecycleOwner, {
-            it?.let {
-                activity?.title = it
-            }
+        viewModel.stockResult.observe(viewLifecycleOwner, {
+            this.findNavController()
+                .navigate(StockFragmentDirections.actionStockFragmentToStockDetailsFragment(it))
         })
 
         binding.btnSearchQuery.setOnClickListener {
-            Log.d("StockFragment", binding.svSearchQuery.query.toString())
             viewModel.updateQuery(binding.svSearchQuery.query.toString())
             viewModel.onSearchClicked()
             resetSearchView(binding)
         }
-
+        Log.d("StockFragment", activity?.supportFragmentManager?.backStackEntryCount.toString())
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -76,5 +79,13 @@ class StockFragment : Fragment() {
         binding.svSearchQuery.setQuery("", false)
         binding.svSearchQuery.isIconified = true
         binding.svSearchQuery.clearFocus()
+    }
+
+    private fun setStockResultText(condition: Boolean,
+                                   binding: FragmentStockBinding) {
+        if (condition) {
+            binding.tvStockResult.text =
+                String.format(getString(R.string.tv_result_empty), viewModel.searchQuery.value!!)
+        }
     }
 }

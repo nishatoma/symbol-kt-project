@@ -32,7 +32,7 @@ class StockFragment : Fragment() {
         // Change activity title
         activity?.title = getString(R.string.stock_fragment_title)
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
         val adapter = StockListAdapter(StockListAdapter.ClickListener{
@@ -61,8 +61,11 @@ class StockFragment : Fragment() {
         })
 
         viewModel.stockResult.observe(viewLifecycleOwner, {
-            this.findNavController()
-                .navigate(StockFragmentDirections.actionStockFragmentToStockDetailsFragment(it))
+            it?.let {
+                this.findNavController()
+                    .navigate(StockFragmentDirections.actionStockFragmentToStockDetailsFragment(it))
+                viewModel.onResultClicked()
+            }
         })
 
         binding.btnSearchQuery.setOnClickListener {

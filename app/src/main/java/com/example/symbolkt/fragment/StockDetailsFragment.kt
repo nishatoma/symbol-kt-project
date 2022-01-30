@@ -21,7 +21,7 @@ class StockDetailsFragment : Fragment() {
         val binding = FragmentStockDetailsBinding.inflate(inflater)
 
         // set Lifecycle owner
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         // change title of activity
         activity?.title = getString(R.string.stock_fragment_details_title)
 

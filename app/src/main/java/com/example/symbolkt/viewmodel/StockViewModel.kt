@@ -80,4 +80,8 @@ class StockViewModel: ViewModel() {
     fun setStockResult(result: StockResult) {
         _stockResult.value = result
     }
+
+    fun onResultClicked() {
+        _stockResult.value = null
+    }
 }

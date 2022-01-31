@@ -112,7 +112,7 @@
 
                     <TextView
                         android:id="@+id/tv_stock_detail_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="@{viewModel.stockDetails.name}"
@@ -122,7 +122,7 @@
 
                     <TextView
                         android:id="@+id/tv_stock_detail_exchange"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="@{viewModel.stockDetails.exchange}"

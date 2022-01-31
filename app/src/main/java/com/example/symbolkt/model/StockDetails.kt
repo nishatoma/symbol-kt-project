@@ -12,7 +12,7 @@ data class StockDetails(
     val ipoDate: String?,
     val logo: String?,
     @SerializedName("marketCapitalization")
-    val mcap: Int?,
+    val mcap: Double?,
     val name: String?,
     val phone: Double?,
     @SerializedName("shareOutstanding")

@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable-v24/bg_gradient.xml" value="0.30462962962962964" />
+        <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable-v24/ic_broken_image.xml" value="0.3536458333333333" />
+        <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable-v24/ic_connection_error.xml" value="0.3536458333333333" />
         <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.30462962962962964" />
+        <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable-v24/loading_img.xml" value="0.3536458333333333" />
         <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable/bg_gradient.xml" value="0.30462962962962964" />
         <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable/bg_splash_text.xml" value="0.3536458333333333" />
         <entry key="..\:/AndroidProjects/SymbolKT/app/src/main/res/drawable/ic_launcher_background.xml" value="0.30462962962962964" />

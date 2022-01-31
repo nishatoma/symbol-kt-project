@@ -10,4 +10,9 @@
     <string name="tv_result_empty">Could not find results for %s</string>
     <string name="stock_fragment_title">Stocks</string>
     <string name="stock_fragment_details_title">Stock Details</string>
+    <!-- Stock Details -->
+    <string name="stock_result_description">Description: %s</string>
+    <string name="stock_result_ticker">Ticker: %s</string>
+    <string name="stock_result_type">Type: %s</string>
+    <string name="show_more">Show More</string>
 </resources>

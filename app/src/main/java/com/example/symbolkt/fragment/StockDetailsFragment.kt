@@ -36,7 +36,19 @@ class StockDetailsFragment : Fragment() {
         // ViewModel provider
         val provider = ViewModelProvider(this, factory)
         // Get the viewmodel and assign it to the binding
-        binding.viewModel = provider[StockDetailsViewModel::class.java]
+        val viewModel = provider[StockDetailsViewModel::class.java]
+        binding.viewModel = viewModel
+
+        viewModel.isDetailCardShown.observe(viewLifecycleOwner, {
+            it?.let {
+                if (it) {
+                    binding.btnShowMore.text = getString(R.string.show_less)
+                } else {
+                    binding.btnShowMore.text = getString(R.string.show_more)
+                }
+            }
+        })
+
         return binding.root
     }
 }

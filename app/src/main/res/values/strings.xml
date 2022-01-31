@@ -14,4 +14,5 @@
     <string name="stock_result_ticker">Ticker: %s</string>
     <string name="stock_result_type">Type: %s</string>
     <string name="show_more">Show More</string>
+    <string name="show_less">Show Less</string>
 </resources>

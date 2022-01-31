@@ -50,6 +50,7 @@ class StockDetailsViewModel(stockResult: StockResult) : ViewModel() {
             val stockDetailsResponse = SymbolApi.retrofitService.getStockDetails(_currStock.value?.symbol!!)
             if (stockDetailsResponse.isSuccessful) {
                 _stockDetails.postValue(stockDetailsResponse.body())
+                Log.d("StockDetailsViewModel", stockDetailsResponse.body().toString())
             } else {
                 Log.e("StockDetailsViewModel", stockDetailsResponse.errorBody().toString())
             }

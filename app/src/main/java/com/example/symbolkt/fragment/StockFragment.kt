@@ -2,32 +2,28 @@ package com.example.symbolkt.fragment
 
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.view.View
 import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.symbolkt.R
 import com.example.symbolkt.adapter.StockListAdapter
 import com.example.symbolkt.databinding.FragmentStockBinding
-import com.example.symbolkt.model.StockResult
 import com.example.symbolkt.viewmodel.StockViewModel
 
 
-class StockFragment : Fragment() {
+class StockFragment : Fragment(R.layout.fragment_stock) {
 
     private val viewModel: StockViewModel by lazy {
         ViewModelProvider(this)[StockViewModel::class.java]
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentStockBinding.inflate(inflater)
+        val binding = DataBindingUtil.bind<FragmentStockBinding>(view)!!
 
         // Change activity title
         activity?.title = getString(R.string.stock_fragment_title)
@@ -75,7 +71,6 @@ class StockFragment : Fragment() {
         }
         Log.d("StockFragment", activity?.supportFragmentManager?.backStackEntryCount.toString())
         // Inflate the layout for this fragment
-        return binding.root
     }
 
     private fun resetSearchView(binding: FragmentStockBinding) {
